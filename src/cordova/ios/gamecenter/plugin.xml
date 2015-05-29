@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.ludei.multiplayer.ios.gamecenter" version="1.0.0">
+    <name>CocoonMultiplayerGameCenter</name>
+    <description>iOS Multiplayer Game Center API</description>
+    <license>MPL 2.0</license>
+    <keywords>cordova,multiplayer,GameCenter,game,center,cocoon,atomic,plugins</keywords>
+    <platform name="ios">
+        <header-file src="src/deps/LDMultiplayerGameCenter.h" />
+        <source-file src="src/deps/LDMultiplayerGameCenter.m" />
+        <header-file src="src/LDMultiplayerGameCenterPlugin.h" />
+        <source-file src="src/LDMultiplayerGameCenterPlugin.m" />
+
+        <framework src="GameKit.framework" />
+
+        <config-file target="config.xml" parent="/*">
+	    	<feature name="LDMultiplayerGameCenterPlugin">
+	        	<param name="ios-package" value="LDMultiplayerGameCenterPlugin" />
+	    	</feature>
+    	</config-file>
+
+        <js-module src="www/cocoon_multiplayer_gamecenter.js" name="GameCenter">
+            <merges target="window.Cocoon.Multiplayer" />
+        </js-module>
+
+    </platform>
+    <dependency id="com.ludei.multiplayer.ios.common" />
+    <dependency id="com.ludei.social.ios.gamecenter" />
+</plugin>
