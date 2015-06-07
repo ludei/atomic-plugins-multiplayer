@@ -187,9 +187,9 @@ static GKMatchRequest * toGKMatchRequest(LDMultiplayerMatchRequest * request)
 {
     if (self = [super init]) {
         _match = gkMatch;
-        _match.delegate = self;
         _ready = NO;
         _pendingNotifications = [NSMutableArray array];
+        _match.delegate = self;
     }
     return self;
 }

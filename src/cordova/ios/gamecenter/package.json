@@ -1,0 +1,21 @@
+{
+    "version": "1.0.0",
+    "name": "com.ludei.multiplayer.ios.gamecenter",
+    "cordova_name": "CocoonMultiplayerGameCenter",
+    "description": "iOS Multiplayer Game Center API",
+    "license": "MPL 2.0",
+    "keywords": [
+        "cordova",
+        "multiplayer",
+        "GameCenter",
+        "game",
+        "center",
+        "cocoon",
+        "atomic",
+        "plugins"
+    ],
+    "platforms": [
+        "ios"
+    ],
+    "engines": []
+}
