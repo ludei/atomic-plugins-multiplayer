@@ -76,12 +76,12 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
                 else if (eventName === 'stateChanged') {
                     playerID = params[2];
                     var state = params[3];
-                    match.matchData.expectedPlayerCount = params[4];
+                    match.matchData = params[4];
                     match.signal.emit('match', eventName, [match, playerID, state]);
                 }
                 else {
                     //connectionWithPlayerFailed or failed
-                    match.signal.emit('match', eventName, [match, params[2]]);
+                    match.signal.emit('match', eventName, [match, params[2], params[3]]);
                 }
             });
         },

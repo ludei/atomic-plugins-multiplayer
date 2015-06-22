@@ -223,7 +223,7 @@ static NSDictionary * toError(NSString * message)
     
     NSString * message = [command argumentAtIndex:1 withDefault:@"" andClass:[NSString class]];
     NSArray * players = [command argumentAtIndex:2 withDefault:@[] andClass:[NSArray class]];
-    NSNumber * sendMode = [command argumentAtIndex:2 withDefault:@0 andClass:[NSNumber class]];
+    NSNumber * sendMode = [command argumentAtIndex:3 withDefault:@0 andClass:[NSNumber class]];
     
     NSData * data = [message dataUsingEncoding:NSUTF8StringEncoding];
     LDMultiplayerConnection mode = sendMode.intValue == 0 ? LDMultiplayerConnectionReliable : LDMultiplayerConnectionUnreliable;
@@ -338,13 +338,13 @@ static NSDictionary * toError(NSString * message)
     else if (state == LDMultiplayerStateDisconnected) {
         value = 2;
     }
-    [self notifyMatchEvent:match arguments:@[@"stateChanged", playerID, [NSNumber numberWithInteger:value], [NSNumber numberWithInteger:match.expectedPlayerCount]]];
+    [self notifyMatchEvent:match arguments:@[@"stateChanged", playerID, [NSNumber numberWithInteger:value], [self matchToDictionary:match]]]];
     
 }
 
 -(void) multiplayerMatch:(LDMultiplayerMatch *)match connectionWithPlayerFailed:(NSString *)playerID withError:(NSError *)error;
 {
-    [self notifyMatchEvent:match arguments:@[@"connectionWithPlayerFailed", errorToDic(error)]];
+    [self notifyMatchEvent:match arguments:@[@"connectionWithPlayerFailed", playerID, errorToDic(error)]];
 }
 
 -(void) multiplayerMatch:(LDMultiplayerMatch *)match didFailWithError:(NSError *)error
