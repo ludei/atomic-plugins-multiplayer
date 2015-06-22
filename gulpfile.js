@@ -18,11 +18,16 @@ gulp.task('build', function () {
             .pipe(concat('cocoon_multiplayer.js')) 
             .pipe(uglify())
             .pipe(gulp.dest('src/cordova/common/www'));
-    return gulp.src('src/js/cocoon_multiplayer_gamecenter.js')
+    gulp.src('src/js/cocoon_multiplayer_gamecenter.js')
             .pipe(jshint())
             .pipe(jshint.reporter())
             .pipe(uglify())
             .pipe(gulp.dest('src/cordova/ios/gamecenter/www'));
+    return gulp.src('src/js/cocoon_multiplayer_googleplaygames.js')
+            .pipe(jshint())
+            .pipe(jshint.reporter())
+            .pipe(uglify())
+            .pipe(gulp.dest('src/cordova/android/googleplaygames/www'));
 
 });
 gulp.task('doc', ["build"], function() {
