@@ -1,19 +1,32 @@
 (function(){
-
+    /**
+    <h2>Atomic Plugins for Multiplayer</h2>
+    <p>This <a src="https://github.com/ludei/atomic-plugins-multiplayer">repository</a> contains a Social API designed using the Atomic Plugins paradigm. The API is already available in many languagues and we plan to add more in the future.</p>
+    <h3>Setup your project</h3>
+    <p>Releases are deployed to Cordova Plugin Registry. 
+    You only have to install the desired plugins using Cordova CLI, CocoonJS CLI or Cocoon.io Cloud Server.</p>
+    <ul>
+    <code>cordova plugin add com.ludei.multiplayer.ios.gamecenter;</code><br/>
+    <code>cordova plugin add com.ludei.multiplayer.android.googleplaygames;</code><br/>
+    </ul>
+    <p>The following JavaScript files will be included in your html project by default during installation:</p>
+    <ul>
+    <li><a href="https://github.com/ludei/atomic-plugins-multiplayer/blob/master/src/js/cocoon_multiplayer.js">cocoon_multiplayer.js</a></li>
+    <li><a href="https://github.com/ludei/cocoon-common/blob/master/src/js/cocoon.js">cocoon.js</a></li>
+    </ul>
+    <h3>Documentation</h3>
+    <p>In this section you will find all the documentation you need for using this plugin in your Cordova project. 
+    Select the specific namespace below to open the relevant documentation section:</p>
+    <ul>
+    <li><a href="Cocoon.html">Cocoon</a></li>
+    <li><a href="Cocoon.Multiplayer.html">Social</a></li>
+    </ul>
+    */
     if (!window.Cocoon && window.cordova && typeof require !== 'undefined') {
         require('com.ludei.cocoon.common.Cocoon');
     }
     var Cocoon = window.Cocoon;
 /**
- *
- *
- * <div class="alert alert-success">
- *   Here you will find a demo about this namespace: <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Multiplayer">Multiplayer demo</a>.
- *</div>
- *
- * <div class="alert alert-warning">
- *    <strong>Warning!</strong> This JavaScript extension requires some configuration parameters on the <a href="https://ludei.zendesk.com/hc/en-us">cloud compiler</a>!
- * </div>
  * @namespace Cocoon.Multiplayer
  */
 Cocoon.define("Cocoon.Multiplayer" , function(extension){

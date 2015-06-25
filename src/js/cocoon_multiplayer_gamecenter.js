@@ -5,14 +5,6 @@
     }
     var Cocoon = window.Cocoon;
 	/**
-	 *
-	 * <div class="alert alert-success">
-	 *   Here you will find a demo about this namespace: <a href="https://github.com/ludei/cocoonjs-demos/tree/master/Multiplayer">Multiplayer demo</a>.
-	 *</div>
-	 *
-	 * <div class="alert alert-warning">
-	 *    <strong>Warning!</strong> This JavaScript extension requires some configuration parameters on the <a href="https://ludei.zendesk.com/hc/en-us">cloud compiler</a>!
-	 * </div>
 	 * @namespace Cocoon.Multiplayer.GameCenter
 	 * @example
 	 * var GameCenter = Cocoon.Social.GameCenter;
