@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.ludei.multiplayer.common" version="1.0.1">
+        id="com.ludei.multiplayer.common" version="1.0.2">
     <name>CocoonMultiplayerAtomicPlugin</name>
     <description>Cocoon Multiplayer API</description>
     <license>MPL 2.0</license>
     <keywords>cordova,cocoon,multiplayer,google,play,games,game,center,atomic,plugins</keywords>
-
+    <repo>https://github.com/ludei/atomic-plugins-multiplayer</repo>
     <js-module src="www/cocoon_multiplayer.js" name="Multiplayer">
         <runs/>
     </js-module>

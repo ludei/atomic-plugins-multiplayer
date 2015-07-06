@@ -1,7 +1,7 @@
 (function(){
     /**
     <h2>Atomic Plugins for Multiplayer</h2>
-    <p>This <a src="https://github.com/ludei/atomic-plugins-multiplayer">repository</a> contains a Social API designed using the Atomic Plugins paradigm. The API is already available in many languagues and we plan to add more in the future.</p>
+    <p>This <a src="https://github.com/ludei/atomic-plugins-multiplayer">repository</a> contains a Multiplayer API designed using the Atomic Plugins paradigm. The API is already available in many languagues and we plan to add more in the future.</p>
     <h3>Setup your project</h3>
     <p>Releases are deployed to Cordova Plugin Registry. 
     You only have to install the desired plugins using Cordova CLI, CocoonJS CLI or Cocoon.io Cloud Server.</p>
