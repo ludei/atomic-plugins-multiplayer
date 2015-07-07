@@ -1,0 +1,35 @@
+{
+  "name": "cocoon-plugin-multiplayer-android-googleplaygames",
+  "version": "1.0.0",
+  "description": "Android Multiplayer Google Play Games",
+  "cordova": {
+    "id": "cocoon-plugin-multiplayer-android-googleplaygames",
+    "platforms": [
+      "android"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer"
+  },
+  "keywords": [
+    "cordova",
+    "multiplayer",
+    "google",
+    "play",
+    "games",
+    "game",
+    "center",
+    "cocoon",
+    "atomic",
+    "plugins",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "author": "ludei",
+  "license": "MPL 2.0",
+  "bugs": {
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer/issues"
+  },
+  "homepage": "https://github.com/ludei/atomic-plugins-multiplayer#readme"
+}

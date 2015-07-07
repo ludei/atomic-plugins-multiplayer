@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.ludei.multiplayer.ios.common" version="1.0.5">
+        id="cocoon-plugin-multiplayer-ios-common" version="1.0.0">
     <name>CocooniOSMultiplayerCommon</name>
     <description>iOS Multiplayer Common plugin API</description>
     <license>MPL 2.0</license>
@@ -15,6 +15,6 @@
         <header-file src="src/LDMultiplayerPlugin.h" />
         <source-file src="src/LDMultiplayerPlugin.m" />
 
-        <dependency id="com.ludei.multiplayer.common" />
+        <dependency id="cocoon-plugin-multiplayer-common" />
     </platform>
 </plugin>

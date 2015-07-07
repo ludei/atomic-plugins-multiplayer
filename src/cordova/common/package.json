@@ -1,0 +1,32 @@
+{
+  "name": "cocoon-plugin-multiplayer-common",
+  "version": "1.0.0",
+  "description": "Cocoon Multiplayer API",
+  "cordova": {
+    "id": "cocoon-plugin-multiplayer-common",
+    "platforms": []
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer"
+  },
+  "keywords": [
+    "cordova",
+    "cocoon",
+    "multiplayer",
+    "google",
+    "play",
+    "games",
+    "game",
+    "center",
+    "atomic",
+    "plugins",
+    "ecosystem:cordova"
+  ],
+  "author": "ludei",
+  "license": "MPL 2.0",
+  "bugs": {
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer/issues"
+  },
+  "homepage": "https://github.com/ludei/atomic-plugins-multiplayer#readme"
+}

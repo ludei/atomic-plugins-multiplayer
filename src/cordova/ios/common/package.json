@@ -1,0 +1,33 @@
+{
+  "name": "cocoon-plugin-multiplayer-ios-common",
+  "version": "1.0.0",
+  "description": "iOS Multiplayer Common plugin API",
+  "cordova": {
+    "id": "cocoon-plugin-multiplayer-ios-common",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer"
+  },
+  "keywords": [
+    "cordova",
+    "multiplayer",
+    "GameCenter",
+    "game",
+    "center",
+    "cocoon",
+    "atomic",
+    "plugins",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "ludei",
+  "license": "MPL 2.0",
+  "bugs": {
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer/issues"
+  },
+  "homepage": "https://github.com/ludei/atomic-plugins-multiplayer#readme"
+}

@@ -1,5 +1,5 @@
 Cocoon Multiplayer API
-=====================================
+========================
 
 Cocoon.Multiplayer class provides an easy to use Multiplayer API that can be used with different Multiplayer Services: GooglePlay games and GameCenter.
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.ludei.multiplayer.android.common" version="1.0.1">
+        id="cocoon-plugin-multiplayer-android-common" version="1.0.0">
     <name>CocoonAndroidMultiplayerCommon</name>
     <description>Android Multiplayer Common plugin API</description>
     <license>MPL 2.0</license>
@@ -13,6 +13,6 @@
         <source-file src="src/deps/com/ludei/multiplayer/MatchRequest.java" target-dir="src/com/ludei/multiplayer" />
         <source-file src="src/deps/com/ludei/multiplayer/AbstractMatch.java" target-dir="src/com/ludei/multiplayer" />
         <source-file src="src/deps/com/ludei/multiplayer/Player.java" target-dir="src/com/ludei/multiplayer" />
-        <dependency id="com.ludei.multiplayer.common" />
+        <dependency id="cocoon-plugin-multiplayer-common" />
     </platform>
 </plugin>

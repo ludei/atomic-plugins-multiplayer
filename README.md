@@ -36,8 +36,8 @@ Cocoon.Multiplayer class provides an easy to use Multiplayer API that can be use
 
 Releases are deployed to Cordova Plugin Registry. You only have to install the desired plugins using Cordova CLI, CocoonJS CLI or Ludei's Cocoon.io Cloud Server.
 
-    cordova plugin add com.ludei.multiplayer.ios.gamecenter;
-    cordova plugin add com.ludei.multiplayer.android.googleplaygames;
+    cordova plugin add cocoon-plugin-multiplayer-ios-gamecenter;
+    cordova plugin add cocoon-plugin-multiplayer-android-googleplaygames;
 
 The following JavaScript file is included automatically:
 

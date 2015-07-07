@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="com.ludei.multiplayer.ios.gamecenter" version="1.0.2">
+        id="cocoon-plugin-multiplayer-ios-gamecenter" version="1.0.0">
     <name>CocoonMultiplayerGameCenter</name>
     <description>iOS Multiplayer Game Center API</description>
     <license>MPL 2.0</license>
@@ -24,8 +24,7 @@
             <runs/>
         </js-module>
 
-        <dependency id="com.ludei.multiplayer.ios.common" />
-        <dependency id="com.ludei.social.ios.gamecenter" />
-
+        <dependency id="cocoon-plugin-multiplayer-ios-common" />
+        <dependency id="cocoon-plugin-social-ios-gamecenter" />
     </platform>
 </plugin>
