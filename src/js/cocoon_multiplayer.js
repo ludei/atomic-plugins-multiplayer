@@ -23,7 +23,7 @@
     </ul>
     */
     if (!window.Cocoon && window.cordova && typeof require !== 'undefined') {
-        require('com.ludei.cocoon.common.Cocoon');
+        require('cocoon-plugin-common.Cocoon');
     }
     var Cocoon = window.Cocoon;
 /**

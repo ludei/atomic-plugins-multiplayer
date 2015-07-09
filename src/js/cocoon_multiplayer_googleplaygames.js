@@ -1,7 +1,7 @@
 (function() {
 
     if (window.cordova && typeof require !== 'undefined') {
-        cordova.require('com.ludei.multiplayer.common.Multiplayer'); //force dependency load
+        require('cocoon-plugin-multiplayer-common.Multiplayer'); //force dependency load
     }
     var Cocoon = window.Cocoon;
 	/**

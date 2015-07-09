@@ -1,6 +1,6 @@
 {
   "name": "cocoon-plugin-multiplayer-ios-gamecenter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "iOS Multiplayer Game Center API",
   "cordova": {
     "id": "cocoon-plugin-multiplayer-ios-gamecenter",

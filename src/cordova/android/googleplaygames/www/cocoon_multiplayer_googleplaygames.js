@@ -1,1 +1,1 @@
-!function(){window.cordova&&"undefined"!=typeof require&&cordova.require("com.ludei.multiplayer.common.Multiplayer");var e=window.Cocoon;e.define("Cocoon.Multiplayer",function(o){return o.GooglePlayGames=new e.Multiplayer.MultiplayerService("LDMultiplayerGPGPlugin"),o})}();
+!function(){window.cordova&&"undefined"!=typeof require&&require("cocoon-plugin-multiplayer-common.Multiplayer");var e=window.Cocoon;e.define("Cocoon.Multiplayer",function(o){return o.GooglePlayGames=new e.Multiplayer.MultiplayerService("LDMultiplayerGPGPlugin"),o})}();
