@@ -338,7 +338,10 @@ static NSDictionary * toError(NSString * message)
     else if (state == LDMultiplayerStateDisconnected) {
         value = 2;
     }
-    [self notifyMatchEvent:match arguments:@[@"stateChanged", playerID, [NSNumber numberWithInteger:value], [self matchToDictionary:match]]]];
+    NSString * key = [self keyForMatch:match];
+    if (key) {
+        [self notifyMatchEvent:match arguments:@[@"stateChanged", playerID, [NSNumber numberWithInteger:value], matchToDictionary(match, key)]];
+    }
     
 }
 
