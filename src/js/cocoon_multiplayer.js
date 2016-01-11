@@ -4,10 +4,10 @@
     <p>This <a src="https://github.com/ludei/atomic-plugins-multiplayer">repository</a> contains a Multiplayer API designed using the Atomic Plugins paradigm. The API is already available in many languagues and we plan to add more in the future.</p>
     <h3>Setup your project</h3>
     <p>Releases are deployed to Cordova Plugin Registry. 
-    You only have to install the desired plugins using Cordova CLI, CocoonJS CLI or Cocoon.io Cloud Server.</p>
+    You only have to install the desired plugins using Cordova CLI and <a href="https://cocoon.io"/>Cocoon Cloud service</a>.</p>
     <ul>
-    <code>cordova plugin add com.ludei.multiplayer.ios.gamecenter;</code><br/>
-    <code>cordova plugin add com.ludei.multiplayer.android.googleplaygames;</code><br/>
+    <code>cordova plugin add cocoon-plugin-multiplayer-ios-gamecenter;</code><br/>
+    <code>cordova plugin add cocoon-plugin-multiplayer-android-googleplaygames;</code><br/>
     </ul>
     <p>The following JavaScript files will be included in your html project by default during installation:</p>
     <ul>
@@ -21,6 +21,8 @@
     <li><a href="Cocoon.html">Cocoon</a></li>
     <li><a href="Cocoon.Multiplayer.html">Social</a></li>
     </ul>
+    * @version 1.0
+    */
     */
     if (!window.Cocoon && window.cordova && typeof require !== 'undefined') {
         require('cocoon-plugin-common.Cocoon');
