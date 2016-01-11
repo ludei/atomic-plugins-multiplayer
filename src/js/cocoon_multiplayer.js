@@ -21,8 +21,6 @@
     <li><a href="Cocoon.html">Cocoon</a></li>
     <li><a href="Cocoon.Multiplayer.html">Social</a></li>
     </ul>
-    * @version 1.0
-    */
     */
     if (!window.Cocoon && window.cordova && typeof require !== 'undefined') {
         require('cocoon-plugin-common.Cocoon');
