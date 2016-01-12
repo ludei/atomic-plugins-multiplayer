@@ -5,7 +5,7 @@
     }
     var Cocoon = window.Cocoon;
 	/**
-	 * This namespace provides an abstraction API for all the Multiplayer Services.
+	 * This namespace provides an abstraction API for the Google Play Games Multiplayer Service.
 	 * @namespace Cocoon.Multiplayer.GooglePlayGames
 	 * @example
 	 * var GooglePlayGames = Cocoon.Social.GooglePlayGames;

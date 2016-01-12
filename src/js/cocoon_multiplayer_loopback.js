@@ -1,7 +1,19 @@
 (function(){
+
 /*
 * @private
 * @namespace Cocoon.Multiplayer.LoopbackService
+* This namespace provides an abstraction API for the Loopback Multiplayer Service.
+* @namespace Cocoon.Multiplayer.Loopback
+* @example
+* var loopback = new Cocoon.Multiplayer.LoopbackService();
+* var request = new Cocoon.Multiplayer.MatchRequest(2,2);
+* var handleMatch = function(match, error){
+*
+* }
+* ...
+* loopback.findMatch(request, handleMatch);
+* ...
 */
 Cocoon.define("Cocoon.Multiplayer" , function(extension){
 

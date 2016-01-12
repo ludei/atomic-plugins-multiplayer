@@ -5,6 +5,7 @@
     }
     var Cocoon = window.Cocoon;
 	/**
+	 * This namespace provides an abstraction API for the Game Center Multiplayer Service.
 	 * @namespace Cocoon.Multiplayer.GameCenter
 	 * @example
 	 * var GameCenter = Cocoon.Social.GameCenter;

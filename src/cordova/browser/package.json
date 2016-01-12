@@ -1,0 +1,30 @@
+{
+  "name": "cocoon-plugin-multiplayer-browser-common",
+  "version": "1.0.0",
+  "description": "Browser Cocoon Multiplayer API",
+  "cordova": {
+    "id": "cocoon-plugin-multiplayer-browser-common",
+    "platforms": [
+      "browser"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer"
+  },
+  "keywords": [
+    "cordova",
+    "cocoon",
+    "multiplayer",
+    "browser",
+    "atomic",
+    "plugins",
+    "ecosystem:cordova"
+  ],
+  "author": "ludei",
+  "license": "MPL 2.0",
+  "bugs": {
+    "url": "https://github.com/ludei/atomic-plugins-multiplayer/issues"
+  },
+  "homepage": "https://github.com/ludei/atomic-plugins-multiplayer#readme"
+}
