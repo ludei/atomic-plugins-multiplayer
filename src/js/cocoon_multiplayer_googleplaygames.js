@@ -9,6 +9,9 @@
 	 * @namespace Cocoon.Multiplayer.GooglePlayGames
 	 * @example
 	 * var GooglePlayGames = Cocoon.Social.GooglePlayGames;
+	 * GooglePlayGames.init({
+	 * 		defaultLeaderboard: "xxxxx"
+	 * });
 	 * var SocialGooglePlayGames = gpg.getSocialInterface();
 	 * var MultiplayerGooglePlayGames = gpg.getMultiplayerInterface();
 	 *

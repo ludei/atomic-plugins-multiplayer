@@ -79,6 +79,12 @@
 							
 						</li>
 						
+						<li>
+							
+								<a href="Cocoon.Multiplayer.LoopbackService.html">LoopbackService</a>
+							
+						</li>
+						
 
 					</ul>
 				</li>
@@ -419,6 +425,91 @@ Do not forget to call the start method of the match when your game is ready to p
             
 <dt>
     <h4 class="name" id="getLocalPlayerID"><span class="type-signature">&lt;static> </span>getLocalPlayerID<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Gets the local playerID taking part in the match.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>the playerID attached to the match manager.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">string</span>
+
+
+	</dd>
+</dl>
+
+
+        
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getPlayerID"><span class="type-signature">&lt;static> </span>getPlayerID<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
     
 </dt>
@@ -1219,7 +1310,7 @@ Do not forget to call the start method of the match when your game is ready to p
     
         <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">match.on("restore",{
+    <pre class="sunlight-highlight-javascript">match.on("match",{
  dataReceived: function(match, data, playerId){ ... },
  stateChanged: function(match, playerId, connectionState){ ... },
  connectionWithPlayerFailed: function(match, playerId, errorMsg){ ... }

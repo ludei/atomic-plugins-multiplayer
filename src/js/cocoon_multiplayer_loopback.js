@@ -1,10 +1,9 @@
 (function(){
 
-/*
-* @private
+/**
+* This namespace provides an abstraction API for a local loopback service that emulates the bahaviour of a multiplayer service.
+* This service can be very helpful during the development process to setup the login before integrating any other multiplayer service.
 * @namespace Cocoon.Multiplayer.LoopbackService
-* This namespace provides an abstraction API for the Loopback Multiplayer Service.
-* @namespace Cocoon.Multiplayer.Loopback
 * @example
 * var loopback = new Cocoon.Multiplayer.LoopbackService();
 * var request = new Cocoon.Multiplayer.MatchRequest(2,2);
@@ -32,6 +31,15 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
 
     extension.LoopbackService.prototype =  {
 
+        /**
+         * Presents a system View for the matchmaking and creates a new Match.
+         * @function findMatch
+         * @memberOf Cocoon.Multiplayer.LoopbackService
+         * @param {Cocoon.Multiplayer.MatchRequest} matchRequest The parameters for the match.
+         * @param {Function} callback The callback function. It receives the following parameters:
+         * - {@link Cocoon.Multiplayer.Match}.
+         * - Error.
+         */
         findMatch : function(request, callback)  {
 
             this.findMatchCallback = callback;
@@ -68,20 +76,57 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
 
 
         },
+
+        /**
+         * Sends an automatch request to join the authenticated user to a match. It doesn't present a system view while waiting to other players.
+         * @function findAutoMatch
+         * @memberOf Cocoon.Multiplayer.LoopbackService
+         * @param  {Cocoon.Multiplayer.MatchRequest} matchRequest The parameters for the match.
+         * @param {Function} callback The callback function. It receives the following parameters:
+         * - {@link Cocoon.Multiplayer.Match}.
+         * - Error.
+         */
         findAutoMatch : function(matchRequest, callback) {
             this.findMatch(matchRequest,callback);
         },
+
+        /**
+         * Cancels the ongoing automatch request.
+         * @function cancelAutoMatch
+         * @memberOf Cocoon.Multiplayer.LoopbackService
+         */
         cancelAutoMatch : function() {
 
         },
 
+        /**
+         * Automatically adds players to an ongoing match owned by the user.
+         * @function addPlayersToMatch
+         * @memberOf Cocoon.Multiplayer.LoopbackService
+         * @param {Cocoon.Multiplayer.MatchRequest} matchRequest The parameters for the match.
+         * @param {Cocoon.Multiplayer.Match} matchRequest The match where new players will be added.
+         * @param {Function} callback The callback function. Response parameters: error.
+         */
         addPlayersToMatch : function(matchRequest, match, callback) {
             callback({message:"Not implemmented"});
         },
+
+        /**
+         * Gets the local playerID taking part in the match.
+         * @function getPlayerID
+         * @memberOf Cocoon.Multiplayer.Match
+         * @return {string} the playerID attached to the match manager.
+         */
         getPlayerID : function() {
             return this.playerID;
         },
 
+        /**
+         * Get the current match reference.
+         * @function getMatch
+         * @memberOf Cocoon.Multiplayer.LoopbackService
+         * @return {Cocoon.Multiplayer.Match} The current match reference.
+         */
         getMatch : function() {
             return this.currentMatch;
         }

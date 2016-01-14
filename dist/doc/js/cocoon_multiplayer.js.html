@@ -79,6 +79,12 @@
 							
 						</li>
 						
+						<li>
+							
+								<a href="Cocoon.Multiplayer.LoopbackService.html">LoopbackService</a>
+							
+						</li>
+						
 
 					</ul>
 				</li>
@@ -130,6 +136,8 @@
     &lt;li>&lt;a href="http://ludei.github.io/atomic-plugins-docs/dist/doc/js/Cocoon.Multiplayer.GameCenter.html">Game Center Multiplayer&lt;/a>&lt;/li>
     &lt;li>&lt;a href="http://ludei.github.io/atomic-plugins-docs/dist/doc/js/Cocoon.Multiplayer.GooglePlayGames.html">Google Play Games Multiplayer&lt;/a>&lt;/li>
     &lt;/ul>
+    &lt;h3>Full example&lt;/h3>
+    See a full example here: &lt;a href="https://github.com/CocoonIO/cocoon-sample-multiplayer/"/>Multiplayer demo&lt;/a>
     * @version 1.0
     */
 
@@ -152,6 +160,20 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
     };
 
 
+    /**
+    * Triggered when an invitation is received and loaded. This listener should be setup first thing even before the init is called.
+    * @memberOf Cocoon.Multiplayer
+    * @event On invitation
+    * @example
+    * multiplayerService.on("invitation", {
+    *   received: function() {
+    *       console.log("Invitation received");
+    *   },
+    *   loaded: function(match, error) {
+    *       console.log("Invitation ready: (Error: + " + JSON.stringify(error) + ")");
+    *   }
+    * });
+    */
     extension.MultiplayerService.prototype = {
 
         /**
@@ -326,7 +348,7 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
          * @event On restore products callbacks
          * @memberof Cocoon.Multiplayer.Match
          * @example
-         * match.on("restore",{
+         * match.on("match",{
         *  dataReceived: function(match, data, playerId){ ... },
         *  stateChanged: function(match, playerId, connectionState){ ... },
         *  connectionWithPlayerFailed: function(match, playerId, errorMsg){ ... }

@@ -102,7 +102,7 @@
 					
 
 
-	<h1 class="page-title">Namespace: GooglePlayGames</h1>
+	<h1 class="page-title">Namespace: LoopbackService</h1>
 <section>
 
 <header>
@@ -111,7 +111,7 @@
     
 
     
-        GooglePlayGames
+        LoopbackService
     
     </h2>
     
@@ -123,7 +123,8 @@
 
     
         
-            <div class="description"><p>This namespace provides an abstraction API for the Google Play Games Multiplayer Service.</p></div>
+            <div class="description"><p>This namespace provides an abstraction API for a local loopback service that emulates the bahaviour of a multiplayer service.
+This service can be very helpful during the development process to setup the login before integrating any other multiplayer service.</p></div>
         
 
         
@@ -157,24 +158,14 @@
         
             <h3>Example</h3>
             
-    <pre class="sunlight-highlight-javascript">var GooglePlayGames = Cocoon.Social.GooglePlayGames;
-GooglePlayGames.init({
-		defaultLeaderboard: "xxxxx"
-});
-var SocialGooglePlayGames = gpg.getSocialInterface();
-var MultiplayerGooglePlayGames = gpg.getMultiplayerInterface();
+    <pre class="sunlight-highlight-javascript">var loopback = new Cocoon.Multiplayer.LoopbackService();
+var request = new Cocoon.Multiplayer.MatchRequest(2,2);
+var handleMatch = function(match, error){
 
-SocialGooglePlayGames.login(function(loggedIn, error) {
-	if(loggedIn){
-		var request = new Cocoon.Multiplayer.MatchRequest(2,2);
-		var handleMatch = function(match, error){
-
-		}
-		...
-		MultiplayerGooglePlayGames.findMatch(request, handleMatch);
-		...
-	}
-});</pre>
+}
+...
+loopback.findMatch(request, handleMatch);
+...</pre>
 
 
         

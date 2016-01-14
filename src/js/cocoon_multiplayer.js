@@ -28,6 +28,8 @@
     <li><a href="http://ludei.github.io/atomic-plugins-docs/dist/doc/js/Cocoon.Multiplayer.GameCenter.html">Game Center Multiplayer</a></li>
     <li><a href="http://ludei.github.io/atomic-plugins-docs/dist/doc/js/Cocoon.Multiplayer.GooglePlayGames.html">Google Play Games Multiplayer</a></li>
     </ul>
+    <h3>Full example</h3>
+    See a full example here: <a href="https://github.com/CocoonIO/cocoon-sample-multiplayer/"/>Multiplayer demo</a>
     * @version 1.0
     */
 
@@ -50,6 +52,20 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
     };
 
 
+    /**
+    * Triggered when an invitation is received and loaded. This listener should be setup first thing even before the init is called.
+    * @memberOf Cocoon.Multiplayer
+    * @event On invitation
+    * @example
+    * multiplayerService.on("invitation", {
+    *   received: function() {
+    *       console.log("Invitation received");
+    *   },
+    *   loaded: function(match, error) {
+    *       console.log("Invitation ready: (Error: + " + JSON.stringify(error) + ")");
+    *   }
+    * });
+    */
     extension.MultiplayerService.prototype = {
 
         /**
@@ -224,7 +240,7 @@ Cocoon.define("Cocoon.Multiplayer" , function(extension){
          * @event On restore products callbacks
          * @memberof Cocoon.Multiplayer.Match
          * @example
-         * match.on("restore",{
+         * match.on("match",{
         *  dataReceived: function(match, data, playerId){ ... },
         *  stateChanged: function(match, playerId, connectionState){ ... },
         *  connectionWithPlayerFailed: function(match, playerId, errorMsg){ ... }
