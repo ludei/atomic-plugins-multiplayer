@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.GamesActivityResultCodes;
 import com.google.android.gms.games.multiplayer.Invitation;
 import com.google.android.gms.games.multiplayer.Multiplayer;
 import com.google.android.gms.games.multiplayer.OnInvitationReceivedListener;
@@ -58,6 +59,11 @@ public class GPGMultiplayerService implements MultiplayerService, OnInvitationRe
         if (requestCode == REQUEST_FIND_MATCH) {
             managed = true;
             if (resultCode != Activity.RESULT_OK) {
+
+                //User signed out from the multiplayer settings in the upper right corner. Notify the GPG Service!
+                if (resultCode == GamesActivityResultCodes.RESULT_RECONNECT_REQUIRED && GPGService.currentInstance() != null) {
+                    GPGService.currentInstance().logout(null);
+                }
                 //user cancelled
                 if (findMatchCallback != null) {
                     findMatchCallback.onComplete(null, null);
