@@ -17,6 +17,7 @@ import com.google.android.gms.games.multiplayer.realtime.Room;
 import com.google.android.gms.games.multiplayer.realtime.RoomStatusUpdateListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomUpdateListener;
 import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
 import com.ludei.googleplaygames.GPUtils;
 import com.ludei.multiplayer.AbstractMatch;
 import com.ludei.multiplayer.MultiplayerService;
@@ -73,7 +74,14 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
     public com.ludei.multiplayer.Player getLocalPlayer() {
         com.ludei.multiplayer.Player result = new com.ludei.multiplayer.Player();
         result.playerID = myID;
-        result.playerAlias = Plus.PeopleApi.getCurrentPerson(client).getDisplayName();
+        Person person = Plus.PeopleApi.getCurrentPerson(client);
+        if (person != null){
+            result.playerAlias = person.getNickname();
+            if (result.playerAlias == null || result.playerAlias.length() == 0) {
+                result.playerAlias = person.getDisplayName();
+            }
+        }
+        result.avatarURL = "";
         return result;
     }
 
