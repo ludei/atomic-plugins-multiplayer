@@ -126,7 +126,7 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
 
     @Override
     public MultiplayerService.Error sendData(byte[] data, String[] playerIDs, Connection mode) {
-        if (room == null) {
+        if (room == null || disconnected) {
             return new MultiplayerService.Error(1, "Null room");
         }
 
@@ -156,7 +156,7 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
 
     @Override
     public MultiplayerService.Error sendDataToAllPlayers(byte[] data, Connection mode) {
-        if (room == null) {
+        if (room == null || disconnected) {
             return new MultiplayerService.Error(1, "Null room");
         }
 
@@ -176,7 +176,7 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
             Games.RealTimeMultiplayer.sendUnreliableMessageToOthers(client, data, room.getRoomId());
         }
 
-        //send to localPlayer too
+                //send to localPlayer too
         this.notifyOnReceiveData(data, myID);
 
         return null;
@@ -184,10 +184,12 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
 
     @Override
     public void disconnect() {
-        disconnected = true;
-        this._matchDelegate = null;
-        if (room != null) {
-            Games.RealTimeMultiplayer.leave(client, this, this.getRoomId());
+        if (!disconnected) {
+            disconnected = true;
+            this._matchDelegate = null;
+            if (room != null) {
+                Games.RealTimeMultiplayer.leave(client, this, this.getRoomId());
+            }
         }
     }
 
@@ -206,36 +208,20 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
 
     public void waitingUIDismissed(int response) {
 
-        if (response == Activity.RESULT_OK || waitingActivityFinished) {
-            // start the game when the activity result is ok or when we have willfully dismissed the activity on room creation
-            return;
-        }
+        if (response != Activity.RESULT_OK && !waitingActivityFinished) {
+            //Possible causes
 
-        boolean leave = false;
-
-        if (response == Activity.RESULT_CANCELED) {
+            //Response == Activity.RESULT_CANCELED
             // Waiting room was dismissed with the back button. The meaning of this
             // action is up to the game. You may choose to leave the room and cancel the
             // match, or do something else like minimize the waiting room and
-            // continue to connect in the background.
+            // continue to connect in the background. We take the simple approach and just leave the room
 
-            // we take the simple approach and just leave the room:
-            leave = true;
-        }
-        else if (response == GamesActivityResultCodes.RESULT_LEFT_ROOM) {
+            //Response = GamesActivityResultCodes.RESULT_LEFT_ROOM
             // player wants to leave the room.
-            leave = true;
-        }
-
-        if (leave) {
-            String roomId = this.getRoomId();
-            if (roomId != null) {
-                Games.RealTimeMultiplayer.leave(client, this, this.getRoomId());
-            }
-
             notifyOnMatchError(new MultiplayerService.Error(1, "User has left the room"));
+            this.disconnect();
         }
-
     }
 
     public void cancelAutoMatch() {
@@ -269,7 +255,7 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
         }
         if (statusCode != GamesStatusCodes.STATUS_OK) {
             if (listener != null) {
-                listener.roomCreated(this, new MultiplayerService.Error(statusCode, GPUtils.errorCodeToString(statusCode)));
+                listener.roomCreated(this, new MultiplayerService.Error(statusCode, GPGMultiplayerMatch.codeToString(statusCode)));
             }
             return;
         }
@@ -394,5 +380,62 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
     public void onP2PDisconnected(String s) {
         updateRoom(room);
 
+    }
+
+    public static String codeToString(int errorCode) {
+        switch (errorCode) {
+            case GamesStatusCodes.STATUS_ACHIEVEMENT_NOT_INCREMENTAL: return "The call to increment achievement failed since the achievement is not an incremental achievement.";
+            case GamesStatusCodes.STATUS_ACHIEVEMENT_UNKNOWN: return "Could not find the achievement, so the operation to update the achievement failed.";
+            case GamesStatusCodes.STATUS_ACHIEVEMENT_UNLOCKED: return "The incremental achievement was also unlocked when the call was made to increment the achievement.";
+            case GamesStatusCodes.STATUS_ACHIEVEMENT_UNLOCK_FAILURE: return "An incremental achievement cannot be unlocked directly, so the call to unlock achievement failed.";
+            case GamesStatusCodes.STATUS_APP_MISCONFIGURED: return "The developer has misconfigured their application in some way.";
+            case GamesStatusCodes.STATUS_CLIENT_RECONNECT_REQUIRED: return "The GoogleApiClient is in an inconsistent state and must reconnect to the service to resolve the issue.";
+            case GamesStatusCodes.STATUS_GAME_NOT_FOUND: return "The specified game ID was not recognized by the server.";
+            case GamesStatusCodes.STATUS_INTERNAL_ERROR: return "An unspecified error occurred; no more specific information is available.";
+            case GamesStatusCodes.STATUS_INTERRUPTED: return "Was interrupted while waiting for the result.";
+            case GamesStatusCodes.STATUS_INVALID_REAL_TIME_ROOM_ID: return "Constant indicating that the real-time room ID provided to the operation was not valid, or does not correspond to the currently active real-time room.";
+            case GamesStatusCodes.STATUS_LICENSE_CHECK_FAILED: return "The game is not licensed to the user.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_ALREADY_REMATCHED: return "The specified match has already had a rematch created.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_INACTIVE_MATCH: return "The match is not currently active.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_INVALID_MATCH_RESULTS: return "The match results provided in this API call are invalid.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_INVALID_MATCH_STATE: return "The match is not in the correct state to perform the specified action.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_INVALID_PARTICIPANT_STATE: return "One or more participants in this match are not in valid states.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_LOCALLY_MODIFIED: return "The specified match has already been modified locally.";
+            case GamesStatusCodes.STATUS_MATCH_ERROR_OUT_OF_DATE_VERSION: return "The match data is out of date.";
+            case GamesStatusCodes.STATUS_MATCH_NOT_FOUND: return "The specified match cannot be found.";
+            case GamesStatusCodes.STATUS_MILESTONE_CLAIMED_PREVIOUSLY: return "This quest milestone was previously claimed (on this device or another).";
+            case GamesStatusCodes.STATUS_MILESTONE_CLAIM_FAILED: return "This quest milestone is not available for claiming.";
+            case GamesStatusCodes.STATUS_MULTIPLAYER_DISABLED: return "This game does not support multiplayer.";
+            case GamesStatusCodes.STATUS_MULTIPLAYER_ERROR_CREATION_NOT_ALLOWED: return "The user is not allowed to create a new multiplayer game at this time.";
+            case GamesStatusCodes.STATUS_MULTIPLAYER_ERROR_INVALID_MULTIPLAYER_TYPE: return "The match is not the right type to perform this action on.";
+            case GamesStatusCodes.STATUS_MULTIPLAYER_ERROR_INVALID_OPERATION: return "This multiplayer operation is not valid, and the server rejected it.";
+            case GamesStatusCodes.STATUS_MULTIPLAYER_ERROR_NOT_TRUSTED_TESTER: return "The user attempted to invite another user who was not authorized to see the game.";
+            case GamesStatusCodes.STATUS_NETWORK_ERROR_NO_DATA: return "A network error occurred while attempting to retrieve fresh data, and no data was available locally.";
+            case GamesStatusCodes.STATUS_NETWORK_ERROR_OPERATION_DEFERRED: return "A network error occurred while attempting to modify data, but the data was successfully modified locally and will be updated on the network the next time the device is able to sync.";
+            case GamesStatusCodes.STATUS_NETWORK_ERROR_OPERATION_FAILED: return "A network error occurred while attempting to perform an operation that requires network access.";
+            case GamesStatusCodes.STATUS_NETWORK_ERROR_STALE_DATA: return "A network error occurred while attempting to retrieve fresh data, but some locally cached data was available.";
+            case GamesStatusCodes.STATUS_OK: return "The operation was successful.";
+            case GamesStatusCodes.STATUS_OPERATION_IN_FLIGHT: return "Trying to start a join/create operation while another is already in flight.";
+            case GamesStatusCodes.STATUS_PARTICIPANT_NOT_CONNECTED: return "Constant indicating that the ID of the participant provided by the user is not currently connected to the client in the real-time room.";
+            case GamesStatusCodes.STATUS_QUEST_NOT_STARTED: return "This quest is not available yet and cannot be accepted.";
+            case GamesStatusCodes.STATUS_QUEST_NO_LONGER_AVAILABLE: return "This quest has expired or the developer has removed, and cannot be accepted.";
+            case GamesStatusCodes.STATUS_REAL_TIME_CONNECTION_FAILED: return "Failed to initialize the network connection for a real-time room.";
+            case GamesStatusCodes.STATUS_REAL_TIME_INACTIVE_ROOM: return "The room is not currently active.";
+            case GamesStatusCodes.STATUS_REAL_TIME_MESSAGE_SEND_FAILED: return "Failed to send message to the peer participant for a real-time room.";
+            case GamesStatusCodes.STATUS_REAL_TIME_ROOM_NOT_JOINED: return "Failed to send message to the peer participant for a real-time room, since the user has not joined the room.";
+            case GamesStatusCodes.STATUS_REQUEST_TOO_MANY_RECIPIENTS: return "Sending request failed due to too many recipients.";
+            case GamesStatusCodes.STATUS_REQUEST_UPDATE_PARTIAL_SUCCESS: return "Some of the batched network operations succeeded.";
+            case GamesStatusCodes.STATUS_REQUEST_UPDATE_TOTAL_FAILURE: return "All of the request update operations attempted failed.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_COMMIT_FAILED: return "The attempt to commit the snapshot change failed.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT: return "A conflict was detected for the snapshot.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_CONFLICT_MISSING: return "The conflict that was being resolved doesn't exist.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_CONTENTS_UNAVAILABLE: return "An error occurred while attempting to open the contents of the snapshot.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_CREATION_FAILED: return "The attempt to create a snapshot failed.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_FOLDER_UNAVAILABLE: return "The root folder for snapshots could not be found or created.";
+            case GamesStatusCodes.STATUS_SNAPSHOT_NOT_FOUND: return "The specified snapshot does not exist on the server.";
+            case GamesStatusCodes.STATUS_TIMEOUT: return "Timeout";
+            default:
+                return "Unknown error code " + errorCode;
+        }
     }
 }
