@@ -166,8 +166,10 @@ public class GPGMultiplayerService implements MultiplayerService, OnInvitationRe
         }
 
         if (minPlayers > 0 || maxPlayers > 0) {
-            long mask =  (((long)request.playerAttributes) << 32) | (request.playerGroup & 0xffffffffL);
-            builder.setAutoMatchCriteria(RoomConfig.createAutoMatchCriteria(minPlayers,maxPlayers,mask));
+            builder.setAutoMatchCriteria(RoomConfig.createAutoMatchCriteria(minPlayers,maxPlayers,request.playerAttributes));
+            if (request.playerGroup != 0) {
+                builder.setVariant(request.playerGroup);
+            }
         }
 
         RoomConfig roomConfig = builder.build();
