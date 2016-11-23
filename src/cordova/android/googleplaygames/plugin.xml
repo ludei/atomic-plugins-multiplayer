@@ -7,6 +7,7 @@
     <keywords>cordova,multiplayer,google,play,games,game,center,cocoon,atomic,plugins</keywords>
     <repo>https://github.com/ludei/atomic-plugins-multiplayer</repo>
     <platform name="android">
+        <preference name="APP_ID" />
         <source-file src="src/deps/com/ludei/multiplayer/googleplaygames/GPGMultiplayerService.java" target-dir="src/com/ludei/multiplayer/googleplaygames" />
         <source-file src="src/deps/com/ludei/multiplayer/googleplaygames/GPGMultiplayerMatch.java" target-dir="src/com/ludei/multiplayer/googleplaygames" />
         <source-file src="src/GPGMultiplayerPlugin.java" target-dir="src/com/ludei/multiplayer/cordova" />
