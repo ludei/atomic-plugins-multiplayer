@@ -15,17 +15,17 @@ import org.json.JSONObject;
 import com.ludei.multiplayer.MatchRequest;
 import com.ludei.multiplayer.MultiplayerMatch;
 import com.ludei.multiplayer.MultiplayerService;
-import com.ludei.multiplayer.Player;
+import com.ludei.multiplayer.LDPlayer;
 
 public class MultiplayerPlugin extends CordovaPlugin implements MultiplayerService.Delegate, MultiplayerMatch.Delegate {
 
-	protected MultiplayerService _service;
-	private CallbackContext _serviceListener;
-	private CallbackContext _matchListener;
+    protected MultiplayerService _service;
+    private CallbackContext _serviceListener;
+    private CallbackContext _matchListener;
     private HashMap<String, MultiplayerMatch> _matches = new HashMap<String, MultiplayerMatch>();
     private int _matchIndex = 0;
-	
-	protected void pluginInitialize() {
+    
+    protected void pluginInitialize() {
         this._service.setDelegate(this);
     }
 
@@ -36,31 +36,31 @@ public class MultiplayerPlugin extends CordovaPlugin implements MultiplayerServi
     }
 
 
-	@Override
-	public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
+    @Override
+    public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
 
-		try
-		{
-			Method method = this.getClass().getMethod(action, CordovaArgs.class, CallbackContext.class);
-			method.invoke(this, args, callbackContext);
-			return true;
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
+        try
+        {
+            Method method = this.getClass().getMethod(action, CordovaArgs.class, CallbackContext.class);
+            method.invoke(this, args, callbackContext);
+            return true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	@SuppressWarnings("unused")
-	public void setServiceListener(CordovaArgs args, CallbackContext ctx) throws JSONException {
-		_serviceListener = ctx;
-	}
+    @SuppressWarnings("unused")
+    public void setServiceListener(CordovaArgs args, CallbackContext ctx) throws JSONException {
+        _serviceListener = ctx;
+    }
 
-	@SuppressWarnings("unused")
-	public void setMatchListener(CordovaArgs args, CallbackContext ctx) throws JSONException {
-		_matchListener = ctx;
-	}
+    @SuppressWarnings("unused")
+    public void setMatchListener(CordovaArgs args, CallbackContext ctx) throws JSONException {
+        _matchListener = ctx;
+    }
 
     private MultiplayerService.MatchCompletion createMatchCompletion(final CallbackContext ctx) {
         return new MultiplayerService.MatchCompletion() {
@@ -232,13 +232,13 @@ public class MultiplayerPlugin extends CordovaPlugin implements MultiplayerServi
         }
         match.requestPlayersInfo(new MultiplayerMatch.PlayerRequestCompletion() {
             @Override
-            public void onComplete(Player[] players, MultiplayerService.Error error) {
+            public void onComplete(LDPlayer[] players, MultiplayerService.Error error) {
                 if (error != null) {
                     ctx.error(errorToJson(error));
                 } else {
                     JSONArray array = new JSONArray();
                     if (players != null) {
-                        for (Player player : players) {
+                        for (LDPlayer player : players) {
                             array.put(playerToJson(player));
                         }
                     }
@@ -412,7 +412,7 @@ public class MultiplayerPlugin extends CordovaPlugin implements MultiplayerServi
         return result;
     }
 
-    private JSONObject playerToJson(Player player) {
+    private JSONObject playerToJson(LDPlayer player) {
         JSONObject result = new JSONObject();
         try
         {
