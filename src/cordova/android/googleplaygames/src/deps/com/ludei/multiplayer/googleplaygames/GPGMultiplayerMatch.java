@@ -16,12 +16,11 @@ import com.google.android.gms.games.multiplayer.realtime.RealTimeMultiplayer.Rel
 import com.google.android.gms.games.multiplayer.realtime.Room;
 import com.google.android.gms.games.multiplayer.realtime.RoomStatusUpdateListener;
 import com.google.android.gms.games.multiplayer.realtime.RoomUpdateListener;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
+import com.google.android.gms.games.Player;
 import com.ludei.googleplaygames.GPUtils;
 import com.ludei.multiplayer.AbstractMatch;
 import com.ludei.multiplayer.MultiplayerService;
-import com.ludei.multiplayer.Player;
+import com.ludei.multiplayer.LDPlayer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,15 +70,12 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
     }
 
     @Override
-    public com.ludei.multiplayer.Player getLocalPlayer() {
-        com.ludei.multiplayer.Player result = new com.ludei.multiplayer.Player();
+    public com.ludei.multiplayer.LDPlayer getLocalPlayer() {
+        com.ludei.multiplayer.LDPlayer result = new com.ludei.multiplayer.LDPlayer();
         result.playerID = myID;
-        Person person = Plus.PeopleApi.getCurrentPerson(client);
+        Player person = Games.Players.getCurrentPlayer(client);
         if (person != null){
-            result.playerAlias = person.getNickname();
-            if (result.playerAlias == null || result.playerAlias.length() == 0) {
-                result.playerAlias = person.getDisplayName();
-            }
+            result.playerAlias = person.getDisplayName();
         }
         result.avatarURL = "";
         return result;
@@ -98,9 +94,9 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
 
         ArrayList<Participant> players = room.getParticipants();
 
-        Player[] result = new Player[players.size()];
+        com.ludei.multiplayer.LDPlayer[] result = new com.ludei.multiplayer.LDPlayer[players.size()];
         for (int i = 0; i< players.size(); ++i) {
-            Player player = new Player();
+            com.ludei.multiplayer.LDPlayer player = new com.ludei.multiplayer.LDPlayer();
             player.playerID = players.get(i).getParticipantId();
             player.playerAlias = players.get(i).getDisplayName();
             player.avatarURL = players.get(i).getHiResImageUrl();
@@ -339,7 +335,7 @@ public class GPGMultiplayerMatch extends AbstractMatch implements RoomUpdateList
     @Override
     public void onConnectedToRoom(Room room) {
         updateRoom(room);
-        myID = room.getParticipantId(Plus.PeopleApi.getCurrentPerson(client).getId());
+        myID = room.getParticipantId(Games.Players.getCurrentPlayer(client).getPlayerId());
     }
 
     @Override

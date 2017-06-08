@@ -12,7 +12,7 @@
         <source-file src="src/deps/com/ludei/multiplayer/MultiplayerMatch.java" target-dir="src/com/ludei/multiplayer" />
         <source-file src="src/deps/com/ludei/multiplayer/MatchRequest.java" target-dir="src/com/ludei/multiplayer" />
         <source-file src="src/deps/com/ludei/multiplayer/AbstractMatch.java" target-dir="src/com/ludei/multiplayer" />
-        <source-file src="src/deps/com/ludei/multiplayer/Player.java" target-dir="src/com/ludei/multiplayer" />
+        <source-file src="src/deps/com/ludei/multiplayer/LDPlayer.java" target-dir="src/com/ludei/multiplayer" />
         <dependency id="cocoon-plugin-multiplayer-common" />
     </platform>
 </plugin>

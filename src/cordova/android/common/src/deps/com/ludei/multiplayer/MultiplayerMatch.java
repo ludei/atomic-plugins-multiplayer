@@ -25,7 +25,7 @@ public interface MultiplayerMatch {
     /**
      Gets the current player info
      */
-    Player getLocalPlayer();
+    LDPlayer getLocalPlayer();
 
     /**
      Gets the current player ID
@@ -75,6 +75,6 @@ public interface MultiplayerMatch {
     }
 
     interface PlayerRequestCompletion {
-        void onComplete(Player[] players, MultiplayerService.Error error);
+        void onComplete(LDPlayer[] players, MultiplayerService.Error error);
     }
 }

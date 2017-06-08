@@ -1,7 +1,7 @@
 package com.ludei.multiplayer;
 
 
-public class Player
+public class LDPlayer
 {
     public String playerID;
     public String playerAlias;
