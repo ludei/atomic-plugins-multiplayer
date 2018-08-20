@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cocoon-plugin-multiplayer-android-googleplaygames" version="1.0.3">
+        id="cocoon-plugin-multiplayer-android-googleplaygames" version="1.0.4">
     <name>CocoonMultiplayerGooglePlayGames</name>
     <description>Android Multiplayer Google Play Games</description>
     <license>MPL 2.0</license>
@@ -23,8 +23,8 @@
             <runs/>
         </js-module>
 
-        <dependency id="cocoon-plugin-multiplayer-android-common" />
-        <dependency id="cocoon-plugin-social-android-googleplaygames" />
+        <dependency id="cocoon-plugin-multiplayer-android-common" version="1.0.1" />
+        <dependency id="cocoon-plugin-social-android-googleplaygames" version="1.1.5" />
 
     </platform>
 </plugin>

@@ -1,6 +1,6 @@
 {
   "name": "cocoon-plugin-multiplayer-android-googleplaygames",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Android Multiplayer Google Play Games",
   "cordova": {
     "id": "cocoon-plugin-multiplayer-android-googleplaygames",
