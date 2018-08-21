@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cocoon-plugin-multiplayer-android-googleplaygames" version="1.0.4">
+        id="cocoon-plugin-multiplayer-android-googleplaygames" version="2.0.0">
     <name>CocoonMultiplayerGooglePlayGames</name>
     <description>Android Multiplayer Google Play Games</description>
     <license>MPL 2.0</license>
@@ -12,7 +12,7 @@
         <source-file src="src/deps/com/ludei/multiplayer/googleplaygames/GPGMultiplayerMatch.java" target-dir="src/com/ludei/multiplayer/googleplaygames" />
         <source-file src="src/GPGMultiplayerPlugin.java" target-dir="src/com/ludei/multiplayer/cordova" />
 
-        <config-file target="res/xml/config.xml" parent="/*">
+        <config-file target="app/src/main/res/xml/config.xml" parent="/*">
             <feature name="LDMultiplayerGPGPlugin">
                 <param name="android-package" value="com.ludei.multiplayer.cordova.GPGMultiplayerPlugin"/>
             </feature>
@@ -23,8 +23,8 @@
             <runs/>
         </js-module>
 
-        <dependency id="cocoon-plugin-multiplayer-android-common" version="1.0.1" />
-        <dependency id="cocoon-plugin-social-android-googleplaygames" version="1.1.5" />
+        <dependency id="cocoon-plugin-multiplayer-android-common" />
+        <dependency id="cocoon-plugin-social-android-googleplaygames" />
 
     </platform>
 </plugin>
